@@ -32,11 +32,13 @@ public class RestockingResultImpl extends InventoryManagementSystemImpl implemen
 
 
     public void addProduct(Product product, int amount) {
-        products.add(product);
-        if (productCount.get(product.getProductId()) == null)
+        if (productCount.get(product.getProductId()) == null) {
+            products.add(product);
             productCount.put(product.getProductId(), productCount.get(product.getProductId()) + amount);
-        else
+        }
+        else {
             productCount.put(product.getProductId(), amount);
+        }
     }
 
     @Override
