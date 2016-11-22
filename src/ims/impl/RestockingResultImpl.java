@@ -13,9 +13,10 @@ public class RestockingResultImpl extends InventoryManagementSystemImpl implemen
     int level;
     int amountAdded;
     String location;
+    String defaultLocation = "";
+    int defaultLevel = 0;
 
-    public synchronized RestockingResult restockProduct(String productId, int amountToRestock) {
-
+    public RestockingResult restockProduct(String productId, int amountToRestock) {
         Product product = findProduct(productId);
         if (product != null) {
             RestockingResult restockingResult = new RestockingResultImpl();
@@ -24,9 +25,9 @@ public class RestockingResultImpl extends InventoryManagementSystemImpl implemen
             restockingResult.setLevel(product.getLevel());
             return restockingResult;
         } else {
-            product = new ProductImpl();
-            addProduct(product);
+            product = new ProductImpl(productId, defaultLocation, defaultLevel);
         }
+        addProduct(product, amountToRestock);
         return null;
     }
 

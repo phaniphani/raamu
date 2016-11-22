@@ -6,7 +6,9 @@ import ims.interfaces.Product;
 import ims.interfaces.RestockingResult;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by k on 11/21/16.
@@ -14,9 +16,10 @@ import java.util.List;
 public abstract class InventoryManagementSystemImpl implements InventoryManagementSystem{
 
 
-    List<Product> products = new ArrayList<Product>();
+    static List<Product> products = new ArrayList<Product>();
+    static Map<String, Integer> productCount = new HashMap<String, Integer>();
 
-    public PickingResult pickProduct(String productId, int amountToPick){
+    public PickingResult pickProduct(String productId, int amountToPick) throws Exception{
         return null;
     }
 
@@ -33,8 +36,12 @@ public abstract class InventoryManagementSystemImpl implements InventoryManageme
         return null;
     }
 
-    public void addProduct(Product product) {
+    public void addProduct(Product product, int amount) {
         products.add(product);
+        if (productCount.get(product.getProductId()) == null)
+            productCount.put(product.getProductId(), productCount.get(product.getProductId()) + amount);
+        else
+            productCount.put(product.getProductId(), amount);
     }
 
 }

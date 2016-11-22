@@ -12,18 +12,23 @@ public class PickingResultImpl extends InventoryManagementSystemImpl implements 
     int level;
     int amountPicked;
     String location;
-    public synchronized PickingResult pickProduct(String productId, int amountToPick) {
 
+    public PickingResult pickProduct(String productId, int amountToPick) throws Exception {
         Product product = findProduct(productId);
         PickingResult pickingResult = new PickingResultImpl();
-        if (product != null) {
-                pickingResult.setAmountPicked(amountToPick);
-                pickingResult.setProductId(productId);
-                pickingResult.setLevel(product.getLevel());
-                pickingResult.setLocation(product.getLocation());
-                return pickingResult;
+        if (product != null && InventoryManagementSystemImpl.productCount.get(productId) != null) {
+            int amount = InventoryManagementSystemImpl.productCount.get(productId);
+            if (amount - amountToPick < 0)
+                throw new Exception("Pickup amount is more than available amount");
+            InventoryManagementSystemImpl.productCount.put(productId, amount - amountToPick);
+            pickingResult.setAmountPicked(amountToPick);
+            pickingResult.setProductId(productId);
+            pickingResult.setLevel(product.getLevel());
+            pickingResult.setLocation(product.getLocation());
+            return pickingResult;
+        } else {
+            throw new Exception("Product not found");
         }
-        return null;
     }
 
     @Override
@@ -65,6 +70,5 @@ public class PickingResultImpl extends InventoryManagementSystemImpl implements 
     public void setLocation(String location) {
         this.location = location;
     }
-
 
 }

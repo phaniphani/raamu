@@ -5,7 +5,7 @@ package ims.interfaces;
  */
 public interface InventoryManagementSystem {
 
-    PickingResult pickProduct(String productId, int amountToPick);
+    PickingResult pickProduct(String productId, int amountToPick) throws Exception;
 
     RestockingResult restockProduct(String productId, int amountToRestock);
 

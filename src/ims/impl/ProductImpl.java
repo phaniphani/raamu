@@ -12,6 +12,12 @@ public class ProductImpl implements Product{
     String location;
     int level;
 
+    public ProductImpl(String productId, String location, int level) {
+        this.productId = productId;
+        this.location = location;
+        this.level = level;
+    }
+
     public String getProductId() {
         return productId;
     }
