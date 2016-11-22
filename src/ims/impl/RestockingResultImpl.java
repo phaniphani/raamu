@@ -18,16 +18,14 @@ public class RestockingResultImpl extends InventoryManagementSystemImpl implemen
 
     public RestockingResult restockProduct(RestockingResult restockingResult, String productId, int amountToRestock) {
         Product product = findProduct(productId);
-        if (product != null) {
-            restockingResult.setAmountAdded(amountToRestock);
-            restockingResult.setProductId(productId);
-            restockingResult.setLevel(product.getLevel());
-            return restockingResult;
-        } else {
+        if (product == null) {
             product = new ProductImpl(productId, defaultLocation, defaultLevel);
         }
         addProduct(product, amountToRestock);
-        return null;
+        restockingResult.setAmountAdded(amountToRestock);
+        restockingResult.setProductId(productId);
+        restockingResult.setLevel(product.getLevel());
+        return restockingResult;
     }
 
 
