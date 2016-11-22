@@ -13,9 +13,8 @@ public class PickingResultImpl extends InventoryManagementSystemImpl implements 
     int amountPicked;
     String location;
 
-    public PickingResult pickProduct(String productId, int amountToPick) throws Exception {
+    public PickingResult pickProduct(PickingResult pickingResult, String productId, int amountToPick) throws Exception {
         Product product = findProduct(productId);
-        PickingResult pickingResult = new PickingResultImpl();
         if (product != null && InventoryManagementSystemImpl.productCount.get(productId) != null) {
             int amount = InventoryManagementSystemImpl.productCount.get(productId);
             if (amount - amountToPick < 0)

@@ -1,7 +1,6 @@
 package ims;
 
-import ims.impl.PickingResultImpl;
-import ims.impl.RestockingResultImpl;
+import ims.impl.InventoryManagementSystemImpl;
 import ims.interfaces.InventoryManagementSystem;
 import ims.interfaces.PickingResult;
 import ims.interfaces.RestockingResult;
@@ -11,13 +10,12 @@ import ims.interfaces.RestockingResult;
  */
 public class Main {
 
-    public static void main(String args[]) {
+    public static void main(String args[])throws Exception{
 
-        InventoryManagementSystem pickup = new PickingResultImpl();
-        InventoryManagementSystem restore = new RestockingResultImpl();
+        InventoryManagementSystem inventoryManagementSystem = new InventoryManagementSystemImpl();
 
-        RestockingResult restockingResult = restore.restockProduct("ABC", 10);
-        PickingResult pickingResult = pickup.pickProduct("ABC", 10);
+        RestockingResult restockingResult = inventoryManagementSystem.restockProduct("ABC", 10);
+        PickingResult pickingResult = inventoryManagementSystem.pickProduct("ABC", 10);
 
     }
 }

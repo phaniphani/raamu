@@ -13,18 +13,20 @@ import java.util.Map;
 /**
  * Created by k on 11/21/16.
  */
-public abstract class InventoryManagementSystemImpl implements InventoryManagementSystem{
+public class InventoryManagementSystemImpl implements InventoryManagementSystem{
 
 
     static List<Product> products = new ArrayList<Product>();
     static Map<String, Integer> productCount = new HashMap<String, Integer>();
 
     public PickingResult pickProduct(String productId, int amountToPick) throws Exception{
-        return null;
+        PickingResultImpl pickingResult = new PickingResultImpl();
+        return pickingResult.pickProduct(pickingResult, productId, amountToPick);
     }
 
     public RestockingResult restockProduct(String productId, int amountToRestock) {
-        return null;
+        RestockingResultImpl restockingResult = new RestockingResultImpl();
+        return restockingResult.restockProduct(restockingResult, productId, amountToRestock);
     }
 
     public Product findProduct(String productId) {
