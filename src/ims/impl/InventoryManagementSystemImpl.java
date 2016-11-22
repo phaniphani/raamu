@@ -38,12 +38,5 @@ public class InventoryManagementSystemImpl implements InventoryManagementSystem{
         return null;
     }
 
-    public void addProduct(Product product, int amount) {
-        products.add(product);
-        if (productCount.get(product.getProductId()) == null)
-            productCount.put(product.getProductId(), productCount.get(product.getProductId()) + amount);
-        else
-            productCount.put(product.getProductId(), amount);
-    }
 
 }
