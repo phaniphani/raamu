@@ -26,7 +26,7 @@ public abstract class InventoryManagementSystemImpl implements InventoryManageme
 
     public Product findProduct(String productId) {
             for (Product product : products) {
-                if (product.getProdcutId().equals(productId)) {
+                if (product.getProductId().equals(productId)) {
                     return product;
                 }
             }

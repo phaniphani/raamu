@@ -8,25 +8,18 @@ import ims.interfaces.Product;
  */
 public class ProductImpl implements Product{
 
-    String prodcutId;
-    int amountLeft;
+    String productId;
+    String location;
     int level;
 
-    public String getProdcutId() {
-        return prodcutId;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProdcutId(String prodcutId) {
-        this.prodcutId = prodcutId;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public int getAmountLeft() {
-        return amountLeft;
-    }
-
-    public void setAmountLeft(int amountLeft) {
-        this.amountLeft = amountLeft;
-    }
 
     public int getLevel() {
         return level;
@@ -36,4 +29,11 @@ public class ProductImpl implements Product{
         this.level = level;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }
