@@ -36,7 +36,6 @@ public class RestockingResultImpl extends InventoryManagementSystemImpl implemen
         }
         else {
             productCount.put(product.getProductId(), productCount.get(product.getProductId()) + amount);
-
         }
     }
 
